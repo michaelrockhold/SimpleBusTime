@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tns="http://dotnet.ws.its.washington.edu" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" targetNamespace="http://dotnet.ws.its.washington.edu" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://dotnet.ws.its.washington.edu">
+      <s:element name="getEventEstimatesI">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="timepoint" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getEventEstimatesIResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getEventEstimatesIResult" type="tns:ArrayOfEventEstimate" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfEventEstimate">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="EventEstimate" nillable="true" type="tns:EventEstimate" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="EventEstimate">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="goalDeviation" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="schedTime" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="timestamp" type="s:long" />
+          <s:element minOccurs="1" maxOccurs="1" name="goalTime" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="type" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="distanceToGoal" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="destination" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="route" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="getEventEstimatesIII">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="timepoint" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="loTime" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="hiTime" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getEventEstimatesIIIResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getEventEstimatesIIIResult" type="tns:ArrayOfEventEstimate" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="currentTimeMillis">
+        <s:complexType />
+      </s:element>
+      <s:element name="currentTimeMillisResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="currentTimeMillisResult" type="s:long" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ArrayOfEventEstimate" nillable="true" type="tns:ArrayOfEventEstimate" />
+      <s:element name="long" type="s:long" />
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="getEventEstimatesISoapIn">
+    <wsdl:part name="parameters" element="tns:getEventEstimatesI" />
+  </wsdl:message>
+  <wsdl:message name="getEventEstimatesISoapOut">
+    <wsdl:part name="parameters" element="tns:getEventEstimatesIResponse" />
+  </wsdl:message>
+  <wsdl:message name="getEventEstimatesIIISoapIn">
+    <wsdl:part name="parameters" element="tns:getEventEstimatesIII" />
+  </wsdl:message>
+  <wsdl:message name="getEventEstimatesIIISoapOut">
+    <wsdl:part name="parameters" element="tns:getEventEstimatesIIIResponse" />
+  </wsdl:message>
+  <wsdl:message name="currentTimeMillisSoapIn">
+    <wsdl:part name="parameters" element="tns:currentTimeMillis" />
+  </wsdl:message>
+  <wsdl:message name="currentTimeMillisSoapOut">
+    <wsdl:part name="parameters" element="tns:currentTimeMillisResponse" />
+  </wsdl:message>
+  <wsdl:message name="getEventEstimatesIHttpGetIn">
+    <wsdl:part name="timepoint" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getEventEstimatesIHttpGetOut">
+    <wsdl:part name="Body" element="tns:ArrayOfEventEstimate" />
+  </wsdl:message>
+  <wsdl:message name="getEventEstimatesIIIHttpGetIn">
+    <wsdl:part name="timepoint" type="s:string" />
+    <wsdl:part name="loTime" type="s:string" />
+    <wsdl:part name="hiTime" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getEventEstimatesIIIHttpGetOut">
+    <wsdl:part name="Body" element="tns:ArrayOfEventEstimate" />
+  </wsdl:message>
+  <wsdl:message name="currentTimeMillisHttpGetIn" />
+  <wsdl:message name="currentTimeMillisHttpGetOut">
+    <wsdl:part name="Body" element="tns:long" />
+  </wsdl:message>
+  <wsdl:message name="getEventEstimatesIHttpPostIn">
+    <wsdl:part name="timepoint" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getEventEstimatesIHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfEventEstimate" />
+  </wsdl:message>
+  <wsdl:message name="getEventEstimatesIIIHttpPostIn">
+    <wsdl:part name="timepoint" type="s:string" />
+    <wsdl:part name="loTime" type="s:string" />
+    <wsdl:part name="hiTime" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getEventEstimatesIIIHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfEventEstimate" />
+  </wsdl:message>
+  <wsdl:message name="currentTimeMillisHttpPostIn" />
+  <wsdl:message name="currentTimeMillisHttpPostOut">
+    <wsdl:part name="Body" element="tns:long" />
+  </wsdl:message>
+  <wsdl:portType name="MybusDotNetSoap">
+    <wsdl:operation name="getEventEstimates">
+      <documentation xmlns="http://schemas.xmlsoap.org/wsdl/">Departure time estimates for a given location</documentation>
+      <wsdl:input name="getEventEstimatesI" message="tns:getEventEstimatesISoapIn" />
+      <wsdl:output name="getEventEstimatesI" message="tns:getEventEstimatesISoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getEventEstimates">
+      <documentation xmlns="http://schemas.xmlsoap.org/wsdl/">Departure time estimates for a given location within a specified time interval</documentation>
+      <wsdl:input name="getEventEstimatesIII" message="tns:getEventEstimatesIIISoapIn" />
+      <wsdl:output name="getEventEstimatesIII" message="tns:getEventEstimatesIIISoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="currentTimeMillis">
+      <wsdl:input message="tns:currentTimeMillisSoapIn" />
+      <wsdl:output message="tns:currentTimeMillisSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="MybusDotNetHttpGet">
+    <wsdl:operation name="getEventEstimates">
+      <documentation xmlns="http://schemas.xmlsoap.org/wsdl/">Departure time estimates for a given location</documentation>
+      <wsdl:input name="getEventEstimatesI" message="tns:getEventEstimatesIHttpGetIn" />
+      <wsdl:output name="getEventEstimatesI" message="tns:getEventEstimatesIHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getEventEstimates">
+      <documentation xmlns="http://schemas.xmlsoap.org/wsdl/">Departure time estimates for a given location within a specified time interval</documentation>
+      <wsdl:input name="getEventEstimatesIII" message="tns:getEventEstimatesIIIHttpGetIn" />
+      <wsdl:output name="getEventEstimatesIII" message="tns:getEventEstimatesIIIHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="currentTimeMillis">
+      <wsdl:input message="tns:currentTimeMillisHttpGetIn" />
+      <wsdl:output message="tns:currentTimeMillisHttpGetOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="MybusDotNetHttpPost">
+    <wsdl:operation name="getEventEstimates">
+      <documentation xmlns="http://schemas.xmlsoap.org/wsdl/">Departure time estimates for a given location</documentation>
+      <wsdl:input name="getEventEstimatesI" message="tns:getEventEstimatesIHttpPostIn" />
+      <wsdl:output name="getEventEstimatesI" message="tns:getEventEstimatesIHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getEventEstimates">
+      <documentation xmlns="http://schemas.xmlsoap.org/wsdl/">Departure time estimates for a given location within a specified time interval</documentation>
+      <wsdl:input name="getEventEstimatesIII" message="tns:getEventEstimatesIIIHttpPostIn" />
+      <wsdl:output name="getEventEstimatesIII" message="tns:getEventEstimatesIIIHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="currentTimeMillis">
+      <wsdl:input message="tns:currentTimeMillisHttpPostIn" />
+      <wsdl:output message="tns:currentTimeMillisHttpPostOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="MybusDotNetSoap" type="tns:MybusDotNetSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+    <wsdl:operation name="getEventEstimates">
+      <soap:operation soapAction="http://dotnet.ws.its.washington.edu/getEventEstimatesI" style="document" />
+      <wsdl:input name="getEventEstimatesI">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="getEventEstimatesI">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getEventEstimates">
+      <soap:operation soapAction="http://dotnet.ws.its.washington.edu/getEventEstimatesIII" style="document" />
+      <wsdl:input name="getEventEstimatesIII">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="getEventEstimatesIII">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="currentTimeMillis">
+      <soap:operation soapAction="http://dotnet.ws.its.washington.edu/currentTimeMillis" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="MybusDotNetHttpGet" type="tns:MybusDotNetHttpGet">
+    <http:binding verb="GET" />
+    <wsdl:operation name="getEventEstimates">
+      <http:operation location="/getEventEstimatesI" />
+      <wsdl:input name="getEventEstimatesI">
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output name="getEventEstimatesI">
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getEventEstimates">
+      <http:operation location="/getEventEstimatesIII" />
+      <wsdl:input name="getEventEstimatesIII">
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output name="getEventEstimatesIII">
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="currentTimeMillis">
+      <http:operation location="/currentTimeMillis" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="MybusDotNetHttpPost" type="tns:MybusDotNetHttpPost">
+    <http:binding verb="POST" />
+    <wsdl:operation name="getEventEstimates">
+      <http:operation location="/getEventEstimatesI" />
+      <wsdl:input name="getEventEstimatesI">
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output name="getEventEstimatesI">
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getEventEstimates">
+      <http:operation location="/getEventEstimatesIII" />
+      <wsdl:input name="getEventEstimatesIII">
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output name="getEventEstimatesIII">
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="currentTimeMillis">
+      <http:operation location="/currentTimeMillis" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="MybusDotNet">
+    <documentation xmlns="http://schemas.xmlsoap.org/wsdl/">Real-Time Bus Departure Times for Seattle</documentation>
+    <wsdl:port name="MybusDotNetSoap" binding="tns:MybusDotNetSoap">
+      <soap:address location="http://ws.its.washington.edu/Mybus/Mybus.asmx" />
+    </wsdl:port>
+    <wsdl:port name="MybusDotNetHttpGet" binding="tns:MybusDotNetHttpGet">
+      <http:address location="http://ws.its.washington.edu/Mybus/Mybus.asmx" />
+    </wsdl:port>
+    <wsdl:port name="MybusDotNetHttpPost" binding="tns:MybusDotNetHttpPost">
+      <http:address location="http://ws.its.washington.edu/Mybus/Mybus.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
